@@ -1,6 +1,7 @@
 from model.sales import sales
 from view import terminal as view
 
+print("Cześć Kamil")
 
 def list_transactions():
     view.print_error_message("Not implemented yet.")
