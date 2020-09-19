@@ -1,5 +1,5 @@
 # Secure ERP
-
+#  O co tu chodzi?
 ## Story
 
 You are working at an enterprise solution company.
