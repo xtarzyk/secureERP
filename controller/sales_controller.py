@@ -1,9 +1,21 @@
-def all_games_data(file_name):
+from model.sales.sales import data_manager
+from view import terminal as view
+from csv import reader
+import os
+
+def data(file_name):  #
     file = open(file_name, 'r')
-    lines = file.readlines()
+    lines = reader(file)
     result = []
     for i in lines:
-        result.append(i.split('\t'))
+        result.append([i[0].split(";")])
+    result = [i[0] for i in result]
+    return result
+
+
+print(os.getcwd())
+print(data('../model/sales/sales.csv'))
+
 
 def list_transactions():
     file =open('sales.csv','r')
