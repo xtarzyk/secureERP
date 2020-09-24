@@ -12,3 +12,24 @@ from model import data_manager, util
 
 DATAFILE = "model/crm/crm.csv"
 HEADERS = ["id", "name", "email", "subscribed"]
+
+def list_customers_model():
+    data = data_manager.read_table_from_file(DATAFILE, separator=';')
+    print (HEADERS[1])
+    for name in range(len(data)):
+     print (data[name][1])
+ 
+
+def add_customer_model():
+    table = []
+    ide = util.generate_id(number_of_small_letters=4,
+                number_of_capital_letters=2,
+                number_of_digits=2,
+                number_of_special_chars=2,
+                allowed_special_chars=r"_+-!")
+    table.append(str(ide))
+    name =(input ("Give me your name:"))
+    table.append(str(name))
+    email = (input("Give me your email:"))
+    table.append(str(email))
+    data_manager.write_table_to_file(DATAFILE, table, separator=';')
