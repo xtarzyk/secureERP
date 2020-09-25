@@ -5,8 +5,6 @@ def print_menu(title, list_options):
         print(f'({num})', ele)
     # print(*list_options[-3:], sep = '\n')
     print('(0) ', *list_options[0], sep = '')
-    
-    inp = input('\nEnter the number: ')
 
 
     """Prints options in standard menu format like this:
@@ -21,17 +19,16 @@ def print_menu(title, list_options):
         title (str): the title of the menu (first row)
         list_options (list): list of the menu options (listed starting from 1, 0th element goes to the end)
     """
-    pass
 
 
 
 def print_message(message):
+    print(message)
     """Prints a single message to the terminal.
 
     Args:
         message: str - the message
     """
-    pass
 
 
 def print_general_results(result, label):
@@ -60,12 +57,15 @@ def print_table(table):
 
 
 def get_input(label):
+    module = input(f'\n{label}')
+    return module
+
+
     """Gets single string input from the user.
 
     Args:
         label: str - the label before the user prompt
     """
-    pass
 
 
 def get_inputs(labels):
