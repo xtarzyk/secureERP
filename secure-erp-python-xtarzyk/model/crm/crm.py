@@ -18,10 +18,12 @@ def list_customers_model():
     print (HEADERS[1])
     for name in range(len(data)):
      print (data[name][1])
- 
+
 
 def add_customer_model():
     table = []
+    file_name = "model/crm/crm.csv"
+    separator = ";"
     ide = util.generate_id(number_of_small_letters=4,
                 number_of_capital_letters=2,
                 number_of_digits=2,
@@ -32,4 +34,9 @@ def add_customer_model():
     table.append(str(name))
     email = (input("Give me your email:"))
     table.append(str(email))
-    data_manager.write_table_to_file(DATAFILE, table, separator=';')
+    with open(file_name, "a") as file:
+        file.write("\n")
+        for record in table:
+            row = separator.join(record)
+            file.write(record + ";")
+    
