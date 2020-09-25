@@ -1,13 +1,11 @@
-from model.sales.sales import data_manager
-from model.data_manager import read_table_from_file, write_table_to_file
+model.sales.sales import data_manager
+from model.data_manager import read_table_from_file,write_table_to_file
 from model.util import generate_id
 from view import terminal as view
 from csv import reader
 import os
 
 # Plikow tekstowych sie nie importuje!
-
-
 def data(file_name):  # To nie jest wzór do nasladowania
     file = open(file_name, 'r')
     lines = reader(file)
@@ -22,8 +20,6 @@ print(os.getcwd())
 # print(data('../model/sales/sales.csv'))
 
 FILE_NAME = '../model/sales/sales.csv'
-
-
 def list_transactions():
     transation = data(FILE_NAME)
     for i in transation:
@@ -34,18 +30,15 @@ def list_transactions():
 
 # list_transactions()
 
-
 def add_transaction():
     print("ADD TRANSACTION")
-    item = [generate_id(), generate_id(), input("Name item: "), input(
-        "Revenue: "), input("Date in YYYY-MM-DD format: ")]
-    content = read_table_from_file(FILE_NAME) + [item]
+    item = [generate_id(), generate_id(), input("Name item: "),input("Revenue: "),input("Date in YYYY-MM-DD format: ")]
+    content = read_table_from_file(FILE_NAME) +[item]
     print(content)
-    write_table_to_file(FILE_NAME, content)
+    write_table_to_file(FILE_NAME,content)
     view.print_error_message("Not implemented yet.")
     print(item)
 # add_transaction()
-
 
 def update_transaction():
     print("UPDATE TRANSACTION")
@@ -55,14 +48,13 @@ def update_transaction():
     for i in transactions:
         print(i)
         if i[0] == update_id:
-            result.append([i[0], input('Employee id: '), input("Name item: "), input("Revenue: "),
-                           input("Date in YYYY-MM-DD format: ")])
+            result.append([i[0],input('Employee id: '), input("Name item: "), input("Revenue: "),
+                    input("Date in YYYY-MM-DD format: ")])
         else:
             result.append(i)
     print(result)
-    write_table_to_file(FILE_NAME, result)
+    write_table_to_file(FILE_NAME,result)
     view.print_error_message("Not implemented yet.")
-
 
 update_transaction()
 
