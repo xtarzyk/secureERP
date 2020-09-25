@@ -1,9 +1,14 @@
 from model.sales.sales import data_manager
+from model.data_manager import read_table_from_file, write_table_to_file
+from model.util import generate_id
 from view import terminal as view
 from csv import reader
 import os
 
-def data(file_name):  #
+# Plikow tekstowych sie nie importuje!
+
+
+def data(file_name):  # To nie jest wzór do nasladowania
     file = open(file_name, 'r')
     lines = reader(file)
     result = []
@@ -14,22 +19,52 @@ def data(file_name):  #
 
 
 print(os.getcwd())
-print(data('../model/sales/sales.csv'))
+# print(data('../model/sales/sales.csv'))
+
+FILE_NAME = '../model/sales/sales.csv'
 
 
 def list_transactions():
-    file =open('sales.csv','r')
-    file.read()
-    view.print_error_message("Not implemented yet.")
-list_transactions()
+    transation = data(FILE_NAME)
+    for i in transation:
+        print(''.join(i))
+
+    # view.print_error_message("Not implemented yet.")
+    return transation
+
+# list_transactions()
 
 
 def add_transaction():
+    print("ADD TRANSACTION")
+    item = [generate_id(), generate_id(), input("Name item: "), input(
+        "Revenue: "), input("Date in YYYY-MM-DD format: ")]
+    content = read_table_from_file(FILE_NAME) + [item]
+    print(content)
+    write_table_to_file(FILE_NAME, content)
     view.print_error_message("Not implemented yet.")
+    print(item)
+# add_transaction()
 
 
 def update_transaction():
+    print("UPDATE TRANSACTION")
+    update_id = input('Provide id of record to update: ')
+    transactions = read_table_from_file(FILE_NAME)
+    result = []
+    for i in transactions:
+        print(i)
+        if i[0] == update_id:
+            result.append([i[0], input('Employee id: '), input("Name item: "), input("Revenue: "),
+                           input("Date in YYYY-MM-DD format: ")])
+        else:
+            result.append(i)
+    print(result)
+    write_table_to_file(FILE_NAME, result)
     view.print_error_message("Not implemented yet.")
+
+
+update_transaction()
 
 
 def delete_transaction():
@@ -37,12 +72,10 @@ def delete_transaction():
 
 
 def get_biggest_revenue_transaction():
-
     view.print_error_message("Not implemented yet.")
 
 
 def get_biggest_revenue_product():
-    file =open()
     view.print_error_message("Not implemented yet.")
 
 
